@@ -14,7 +14,7 @@ const tokenName = "RandomNFT"
 const description = "Random"
 const symbol = "SYMBOL"
 const sellerFeeBasisPoints = 100
-const imageFile = "assets/nft.png"
+const imageFile = "assets/banana.png"
 
 
 
@@ -35,7 +35,7 @@ async function main() {
   )
 
     // file to buffer
-    const buffer = fs.readFileSync("src/test.png")
+    const buffer = fs.readFileSync("assets/banana.png")
 
     // buffer to metaplex file
     const file = toMetaplexFile(buffer, imageFile)
@@ -58,16 +58,7 @@ async function main() {
   await createNft(metaplex, uri)
 
 
-  // We can update with bottom block When we want to change our nft. We will activate this block whenever we want update nft
 
-  /*
-    // await createNft(metaplex, uri)
-
-  // You can get this from the Solana Explorer URL 
-  const mintAddress = new PublicKey("EPd324PkQx53Cx2g2B9ZfxVmu6m6gyneMaoWTy2hk2bW")
-  await updateNft(metaplex, uri, mintAddress)
-
-    */
 }
 
 
@@ -97,30 +88,6 @@ async function createNft(
 
 
 
-// UPDATE NFT
-async function updateNft(
-  metaplex: Metaplex,
-  uri: string,
-  mintAddress: PublicKey
-) {
-  // get "NftWithToken" type from mint address
-  const nft = await metaplex.nfts().findByMint({ mintAddress })
-
-  // omit any fields to keep unchanged
-  await metaplex
-    .nfts()
-    .update({
-      nftOrSft: nft,
-      name: tokenName,
-      symbol: symbol,
-      uri: uri,
-      sellerFeeBasisPoints: sellerFeeBasisPoints,
-    })
-
-  console.log(
-    `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
-  )
-}
 
 
 main()
@@ -132,3 +99,5 @@ main()
     console.log(error)
     process.exit(1)
   })
+
+  
