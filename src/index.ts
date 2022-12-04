@@ -14,7 +14,7 @@ const tokenName = "RandomNFT"
 const description = "Random"
 const symbol = "SYMBOL"
 const sellerFeeBasisPoints = 100
-const imageFile = "nft.png"
+const imageFile = "assets/nft.png"
 
 
 
